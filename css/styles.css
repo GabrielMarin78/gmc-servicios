@@ -1,0 +1,276 @@
+/* ===== Variables: azul marino (confianza) + amarillo eléctrico (energía/alerta) ===== */
+:root {--navy: #0b2a4a;--navy-2: #123a63;--yellow: #f5b800;--yellow-soft: #fff6d6;
+  --bg: #f5f7fa;--surface: #fff;--text: #14202e;--muted: #46566a;
+  --border: #c6d0dc;      /* separadores decorativos (tarjetas, panel) */
+  --border-ui: #6b7c93;   /* límites de controles: ≥3:1 frente a blanco y a --bg (WCAG 1.4.11) */
+  --focus: #c2410c;--error: #b3261e;--ok: #146c2e;
+  --s1: .5rem;--s2: 1rem;--s3: 1.5rem;--s4: 3rem;
+  --section-y: 2.5rem;    /* mobile first: se amplía en pantallas grandes */
+  --logo-h: 3rem;
+  --scroll-offset: 4.75rem; /* altura del header fijo en móvil (logo 3rem + padding + borde) */
+  --radius: .6rem;
+  --max: 68rem;
+}
+
+/* Bootstrap ya aplica box-sizing: border-box, no se repite el reset. */
+
+/* Compensa la altura del header fijo al saltar a anclas o enfocar controles.
+   Se usa scroll-margin en cada destino (y no scroll-padding en html) para no interferir
+   con el position: sticky del header. */
+section[id],
+.form-control,
+.form-select,
+.btn {scroll-margin-top: var(--scroll-offset);}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+img {max-width: 100%;height: auto;display: block;}
+
+a {color: var(--navy-2);}
+
+/* ===== Foco visible =====
+   Bootstrap quita el outline en .btn, .form-control y .navbar-toggler con reglas de mayor
+   especificidad; aquí se restablece un indicador uniforme y se anula su box-shadow de foco. */
+:focus-visible,
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.navbar-toggler:focus-visible {outline: 3px solid var(--focus);outline-offset: 3px;box-shadow: none;}
+
+#contenido:focus,
+section[tabindex="-1"]:focus,
+#resumen:focus,
+#conteo:focus {
+  outline: none; /* destinos de foco programático, no son controles */
+}
+
+#resumen:focus-visible {outline: 3px solid var(--focus);outline-offset: 3px;}
+
+/* Bootstrap aporta .container; .wrap conserva el ancho máximo propio de GMC. */
+.container.wrap {width: min(100% - 2rem, var(--max));max-width: var(--max);margin-inline: auto;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: .5rem 1rem;
+  border-radius: var(--radius);
+  z-index: 1100;
+  font-weight: 700;
+}
+
+.skip:focus {top: .5rem;}
+
+h1,h2,h3 {line-height: 1.2;margin: 0 0 var(--s2);color: var(--navy);}
+h1 {font-size: clamp(1.9rem, 6vw, 3.1rem);}
+h2 {font-size: clamp(1.5rem, 4vw, 2.2rem);}
+h3 {font-size: 1.15rem;}
+
+section {padding-block: var(--section-y);}
+
+/* Secciones con fondo de superficie: clase explícita en lugar de depender del orden (nth-of-type) */
+.section-alt {background: var(--surface);}
+
+/* ===== Cabecera: componente Navbar de Bootstrap personalizado con la identidad GMC ===== */
+header {position: sticky;top: 0;z-index: 1050;}
+.gmc-navbar {background: var(--bg);border-bottom: 4px solid var(--yellow);padding-block: .35rem;}
+.logo {display: inline-flex;align-items: center;margin: 0;padding: 0;}
+.logo img {height: 6rem;width: auto;object-fit: contain;}
+
+/* Móvil (mobile first): el menú desplegado se superpone al contenido en lugar de empujarlo.
+   Así la altura del header es constante y los saltos a las anclas no se desfasan. */
+.gmc-navbar .navbar-collapse {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 4px solid var(--yellow);
+  padding: .25rem 1rem .75rem;
+  box-shadow: 0 .5rem 1rem rgba(11, 42, 74, .15);
+}
+
+.gmc-navbar .navbar-nav .nav-link {color: var(--navy);padding: .65rem .75rem;font-weight: 600;}
+.gmc-navbar .navbar-nav .nav-link:hover,
+.gmc-navbar .navbar-nav .nav-link:focus-visible {color: var(--navy-2);text-decoration: underline;}
+.gmc-navbar .navbar-toggler {border: 2px solid var(--navy);border-radius: var(--radius);}
+
+/* ===== Botones Bootstrap personalizados ===== */
+.btn-gmc {
+  --bs-btn-color: var(--navy);
+  --bs-btn-bg: var(--yellow);
+  --bs-btn-border-color: var(--yellow);
+  --bs-btn-hover-color: var(--navy);
+  --bs-btn-hover-bg: #e6ad00;
+  --bs-btn-hover-border-color: #e6ad00;
+  --bs-btn-active-color: var(--navy);
+  --bs-btn-active-bg: #dca600;
+  --bs-btn-active-border-color: #dca600;
+  --bs-btn-disabled-color: var(--navy);
+  --bs-btn-disabled-bg: var(--yellow);
+  --bs-btn-disabled-border-color: var(--yellow);
+  font-weight: 700;
+  border-radius: var(--radius);
+}
+
+.btn-outline-gmc {
+  --bs-btn-color: var(--navy);
+  --bs-btn-border-color: var(--border-ui);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--navy);
+  --bs-btn-hover-border-color: var(--navy);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--navy);
+  --bs-btn-active-border-color: var(--navy);
+  font-weight: 600;
+}
+
+.btn-outline-gmc[aria-pressed="true"] {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--navy);
+  --bs-btn-border-color: var(--navy);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--navy-2);
+  --bs-btn-hover-border-color: var(--navy-2);
+}
+
+/* ===== Hero ===== */
+.hero {background: linear-gradient(160deg, var(--navy), var(--navy-2));color: #fff;}
+.hero h1 {color: #fff;}
+.hero-grid {display: grid;gap: var(--s3);}
+.hero-image {width: 100%;height: auto;max-height: 28rem;object-fit: contain;border-radius: var(--radius);}
+
+.kicker {color: var(--yellow);font-weight: 700;text-transform: uppercase;letter-spacing: .08em;margin: 0 0 var(--s1);}
+
+.lead {
+  font-size: 1.15rem;
+  font-weight: 400; /* Bootstrap define 300: demasiado fino sobre fondo oscuro */
+  color: #dbe6f3;
+}
+
+.meta {
+  list-style: none;
+  padding: 0;
+  margin: var(--s2) 0 var(--s3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+}
+
+.meta li {
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .35);
+  padding: .25rem .75rem;
+  border-radius: 2rem;
+}
+
+/* Sobre fondo azul marino el foco naranja no contrasta: se usa amarillo */
+.hero :focus-visible,
+.hero .btn:focus-visible {outline-color: var(--yellow);}
+
+/* ===== Catálogo: tarjetas Bootstrap alimentadas desde JSON mediante AJAX ===== */
+.filters {display: flex;flex-wrap: wrap;gap: var(--s1);margin-top: var(--s2);}
+
+.service-count {margin-block: var(--s2);color: var(--muted);}
+.service-list {margin-top: var(--s2);margin-bottom: 0;}
+.service-card {
+  height: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--yellow);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+.service-card .card-body {padding: var(--s2);}
+.service-tag {display: inline-block;font-size: .85rem;font-weight: 700;color: var(--muted);margin-bottom: .35rem;}
+.service-card .card-title {color: var(--navy);font-size: 1.15rem;line-height: 1.25;}
+.service-card .card-text {margin-bottom: 0;}
+
+/* ===== Proceso ===== */
+.steps {padding-left: 1.25rem;}
+.steps li {margin-bottom: var(--s1);}
+
+.panel {
+  background: var(--yellow-soft);
+  border: 1px solid var(--yellow);
+  border-radius: var(--radius);
+  padding: var(--s3);
+}
+
+.checks {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+/* ===== Contacto directo ===== */
+.contact-info {max-width: 48rem;margin-bottom: var(--s3);}
+
+.contact-info a,
+footer a {font-weight: 600;}
+
+/* ===== Formulario Bootstrap y validación accesible ===== */
+.gmc-form {max-width: 48rem;}
+
+.field {display: grid;align-content: start;gap: .3rem;}
+
+.form-label {font-weight: 700;color: var(--text);margin-bottom: 0;}
+.form-control,
+.form-select {min-height: 2.75rem;border: 2px solid var(--border-ui);border-radius: var(--radius);color: var(--text);}
+.form-control:focus,
+.form-select:focus {border-color: var(--navy-2);}
+
+/* Estados de validación con los colores propios (≥4,5:1 sobre blanco).
+   Solo los controla JavaScript mediante is-valid / is-invalid. */
+.form-control.is-invalid,
+.form-select.is-invalid {border-color: var(--error);}
+
+.form-control.is-valid,
+.form-select.is-valid {border-color: var(--ok);}
+
+.form-text {color: var(--muted);font-size: .9rem;}
+
+.invalid-feedback {color: var(--error);font-weight: 600;}
+
+#resumen {max-width: 48rem;}
+#resumen ul {margin: .5rem 0 0;padding-left: 1.25rem;}
+#resumen a {color: inherit;font-weight: 600;}
+
+#carga-servicios,
+#error-servicios {max-width: 48rem;}
+footer {background: var(--navy);color: #dbe6f3;padding: var(--s3) 0;text-align: center;}
+footer p {margin: 0;}
+footer a {color: #fff;}
+
+/* ===== Adaptación 1 (≥48em = 768 px): coincide con el punto en que Bootstrap expande el menú.
+   Hero en dos columnas y logo de tamaño completo; en móvil se reduce la cabecera para no ocupar
+   más del 10 % de la altura útil. ===== */
+@media (min-width: 48em) {
+  :root {
+    --logo-h: 4.5rem;
+    --scroll-offset: 6rem; /* header de escritorio ≈5,4rem */
+  }
+
+  /* Menú horizontal en línea: se restablece el estilo de superposición móvil */
+  .gmc-navbar .navbar-collapse {position: static;background: none;border-bottom: 0;padding: 0;box-shadow: none;}
+  .hero-grid {grid-template-columns: 1.1fr 1fr;align-items: center;}
+}
+
+/* ===== Adaptación 2 (≥62em = 992 px): pantallas de escritorio, más espacio entre secciones,
+   mayor separación en el hero y fotografía más grande. ===== */
+@media (min-width: 62em) {
+  :root {--section-y: 4.5rem;}
+  .hero-grid {gap: 3rem;}
+  .hero-image {max-height: 30rem;}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {scroll-behavior: smooth;}
+}

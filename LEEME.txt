@@ -1,0 +1,32 @@
+GMC SERVICIOS - INTEGRACION DE CONTENIDOS DE LA CLASE 5
+
+Estructura incluida:
+- index.html
+- css/styles.css
+- js/app.js
+- data/servicios.json
+- .vscode/launch.json
+
+IMPORTANTE SOBRE LOS RECURSOS GRAFICOS:
+La carpeta assets no se incluye porque las imagenes y el icono originales pertenecen a tu proyecto.
+Copia tu carpeta assets completa junto a index.html y conserva estas rutas:
+  assets/img/gmc-icono-app.ico
+  assets/img/gmc-logo-horizontal-transparente.png
+  assets/img/tecnico.png
+
+COMO PROBAR:
+1. Abre la carpeta GMC_Servicios_Clase5 en Visual Studio Code.
+2. Copia la carpeta assets de tu proyecto original dentro de esta carpeta.
+3. Ejecuta index.html mediante Live Server (o un servidor HTTP local).
+4. No abras index.html directamente con file://: AJAX necesita consultar servicios.json mediante HTTP.
+5. Comprueba la carga de las seis tarjetas, los cuatro filtros, el menú adaptable y la validacion del formulario.
+6. Para probar el error AJAX, cambia temporalmente el nombre de data/servicios.json y vuelve a cargar la página; debe aparecer el mensaje y el botón Reintentar.
+
+LIBRERIAS EXTERNAS (CDN):
+- Bootstrap CSS 5.3.2
+- Bootstrap Bundle 5.3.2
+- jQuery 3.6.4
+Se necesita conexión a Internet para descargar estas librerías.
+
+ALCANCE:
+El archivo JSON funciona como fuente de datos estática consultada mediante AJAX GET. El formulario mantiene la confirmación de simulación porque el proyecto no incluye un servidor ni una API para guardar solicitudes.

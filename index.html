@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GMC Servicios | Electricidad, alarmas y cámaras</title>
+  <meta name="description" content="Instalación y mantenimiento de electricidad residencial y comercial, sistemas de alarma y cámaras de seguridad.">
+  <link rel="icon" href="assets/img/gmc-icono-app.ico" type="image/x-icon">
+
+  <!-- Bootstrap 5.3.2: estilos, grilla y componentes.
+       PENDIENTE: añadir integrity="sha384-..." y crossorigin="anonymous" con los hashes oficiales de getbootstrap.com -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos propios de GMC: se cargan después de Bootstrap para personalizar su apariencia -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <nav class="navbar navbar-expand-md gmc-navbar" aria-label="Navegación principal">
+      <div class="container wrap">
+        <a class="navbar-brand logo" href="#inicio">
+          <img src="assets/img/gmc-logo-horizontal-transparente.png" alt="GMC Servicios">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+          aria-controls="menu" aria-expanded="false" aria-label="Mostrar u ocultar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#proceso">Cómo trabajamos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <section id="inicio" class="hero" aria-labelledby="t-inicio">
+      <div class="container wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="kicker">Hogares y negocios</p>
+            <h1 id="t-inicio">Energía confiable y seguridad para su propiedad</h1>
+            <p class="lead">Instalamos y mantenemos sistemas eléctricos, alarmas y cámaras. Técnicos certificados, garantía por escrito y atención de emergencias.</p>
+            <ul class="meta">
+              <li>Presupuesto gratuito</li>
+              <li>Garantía de 12 meses</li>
+              <li>Soporte 24/7</li>
+            </ul>
+            <a class="btn btn-gmc btn-lg" href="#contacto">Solicitar presupuesto</a>
+          </div>
+          <img class="hero-image" src="assets/img/tecnico.png" width="640" height="420"
+            alt="Técnico realizando trabajos de instalación y mantenimiento" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="section-alt" aria-labelledby="t-serv">
+      <div class="container wrap">
+        <h2 id="t-serv">Nuestros servicios</h2>
+        <p>Filtre por tipo de sistema. Todos incluyen instalación y mantenimiento.</p>
+
+        <div class="filters" id="filtros-servicios" role="group" aria-label="Filtrar servicios por categoría">
+          <button class="btn btn-outline-gmc" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="btn btn-outline-gmc" type="button" data-filter="electricidad" aria-pressed="false">Electricidad</button>
+          <button class="btn btn-outline-gmc" type="button" data-filter="alarmas" aria-pressed="false">Alarmas</button>
+          <button class="btn btn-outline-gmc" type="button" data-filter="camaras" aria-pressed="false">Cámaras</button>
+        </div>
+
+        <!-- Única región en vivo del catálogo: anuncia carga, errores y resultados del filtro -->
+        <p id="conteo" class="service-count" role="status" tabindex="-1">Preparando el catálogo de servicios…</p>
+
+        <!-- El flex va en un contenedor interior: .d-flex usa !important y anularía el atributo hidden -->
+        <div id="carga-servicios" class="alert alert-info">
+          <div class="d-flex align-items-center">
+            <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+            <span>Cargando servicios…</span>
+          </div>
+        </div>
+        <div id="error-servicios" class="alert alert-danger" role="alert" hidden>
+          <p class="mb-2">No fue posible cargar el catálogo de servicios.</p>
+          <button id="reintentar-servicios" class="btn btn-outline-danger btn-sm" type="button">Reintentar</button>
+        </div>
+
+        <!-- Las tarjetas se generan dinámicamente con los datos de data/servicios.json -->
+        <ul class="row g-4 list-unstyled service-list" id="lista"></ul>
+      </div>
+    </section>
+
+    <section id="proceso" aria-labelledby="t-proc">
+      <div class="container wrap">
+        <div class="row g-4 align-items-start">
+          <div class="col-12 col-lg-6">
+            <h2 id="t-proc">Cómo trabajamos</h2>
+            <ol class="steps">
+              <li><strong>Visita técnica.</strong> Evaluamos el sitio sin costo.</li>
+              <li><strong>Presupuesto claro.</strong> Detalle de materiales y mano de obra.</li>
+              <li><strong>Instalación.</strong> Trabajo limpio, con pruebas al finalizar.</li>
+              <li><strong>Mantenimiento.</strong> Planes mensuales, trimestrales o anuales.</li>
+            </ol>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="panel h-100">
+              <h3>Planes de mantenimiento</h3>
+              <p>Evite fallas y apagones con revisiones periódicas de su instalación eléctrica, alarmas y cámaras. Incluyen informe técnico y prioridad en emergencias.</p>
+              <ul class="checks">
+                <li>Termografía de tableros</li>
+                <li>Prueba completa de sensores</li>
+                <li>Respaldo de grabaciones</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section-alt" aria-labelledby="t-cont">
+      <div class="container wrap">
+        <h2 id="t-cont">Solicite su presupuesto</h2>
+
+        <!-- REEMPLAZAR los datos de ejemplo por los reales de GMC -->
+        <div class="panel contact-info">
+          <h3>Contacto directo y emergencias 24/7</h3>
+          <address class="mb-0">
+            Teléfono: <a href="tel:+593000000000">+593 00 000 0000</a><br>
+            WhatsApp: <a href="https://wa.me/593000000000">+593 00 000 0000</a><br>
+            Correo: <a href="mailto:contacto@ejemplo.com">contacto@ejemplo.com</a><br>
+            Dirección: Calle de ejemplo y Avenida de ejemplo, Quito
+          </address>
+        </div>
+
+        <p>Los campos marcados con * son obligatorios.</p>
+        <div id="resumen" class="alert" role="alert" tabindex="-1" hidden></div>
+
+        <form id="form" class="gmc-form" novalidate>
+          <div class="row g-3">
+            <div class="field col-12 col-md-6">
+              <label class="form-label" for="nombre">Nombre completo *</label>
+              <input class="form-control" id="nombre" name="nombre" type="text" autocomplete="name"
+                minlength="3" required aria-describedby="e-nombre">
+              <div class="invalid-feedback" id="e-nombre"></div>
+            </div>
+
+            <div class="field col-12 col-md-6">
+              <label class="form-label" for="correo">Correo electrónico *</label>
+              <input class="form-control" id="correo" name="correo" type="email" autocomplete="email"
+                required aria-describedby="e-correo">
+              <div class="invalid-feedback" id="e-correo"></div>
+            </div>
+
+            <div class="field col-12 col-md-6">
+              <label class="form-label" for="telefono">Teléfono (opcional)</label>
+              <input class="form-control" id="telefono" name="telefono" type="tel" autocomplete="tel"
+                pattern="\+?[0-9 ]{7,20}" aria-describedby="h-tel e-telefono">
+              <div class="form-text" id="h-tel">Puede empezar con + y usar espacios. Entre 7 y 15 dígitos.</div>
+              <div class="invalid-feedback" id="e-telefono"></div>
+            </div>
+
+            <div class="field col-12 col-md-6">
+              <label class="form-label" for="servicio">Servicio de interés *</label>
+              <select class="form-select" id="servicio" name="servicio" required aria-describedby="e-servicio">
+                <option value="">Seleccione una opción</option>
+                <option value="Electricidad residencial">Electricidad residencial</option>
+                <option value="Electricidad comercial">Electricidad comercial</option>
+                <option value="Sistema de alarma">Sistema de alarma</option>
+                <option value="Cámaras de seguridad">Cámaras de seguridad</option>
+                <option value="Mantenimiento">Mantenimiento</option>
+              </select>
+              <div class="invalid-feedback" id="e-servicio"></div>
+            </div>
+
+            <div class="field col-12">
+              <label class="form-label" for="mensaje">Detalles del proyecto</label>
+              <textarea class="form-control" id="mensaje" name="mensaje" rows="4"></textarea>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-gmc" type="submit">Enviar solicitud</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container wrap">
+      <p>© 2026 GMC Servicios. Todos los derechos reservados.</p>
+      <p>Emergencias 24/7: <a href="tel:+593000000000">+593 00 000 0000</a></p>
+    </div>
+  </footer>
+
+  <!-- jQuery para selectores, eventos y solicitudes AJAX (versión completa: la "slim" no incluye AJAX).
+       PENDIENTE: añadir integrity y crossorigin con el hash oficial de code.jquery.com -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
+  <!-- Bootstrap Bundle incluye los componentes JavaScript y Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
+

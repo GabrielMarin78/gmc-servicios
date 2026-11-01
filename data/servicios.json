@@ -1,0 +1,44 @@
+[
+  {
+    "id": "electricidad-residencial",
+    "categoria": "electricidad",
+    "etiqueta": "Electricidad · Residencial",
+    "titulo": "Instalación eléctrica del hogar",
+    "descripcion": "Cableado, tableros, tomacorrientes e iluminación según norma."
+  },
+  {
+    "id": "electricidad-comercial",
+    "categoria": "electricidad",
+    "etiqueta": "Electricidad · Comercial",
+    "titulo": "Redes eléctricas para negocios",
+    "descripcion": "Circuitos trifásicos, tableros industriales y balance de cargas."
+  },
+  {
+    "id": "alarma-instalacion",
+    "categoria": "alarmas",
+    "etiqueta": "Alarmas · Residencial y comercial",
+    "titulo": "Sistemas de alarma",
+    "descripcion": "Sensores de movimiento, contactos de puertas, sirena y aviso al celular."
+  },
+  {
+    "id": "alarma-mantenimiento",
+    "categoria": "alarmas",
+    "etiqueta": "Alarmas · Mantenimiento",
+    "titulo": "Revisión de alarmas",
+    "descripcion": "Prueba de sensores, cambio de baterías y actualización de claves."
+  },
+  {
+    "id": "camaras-instalacion",
+    "categoria": "camaras",
+    "etiqueta": "Cámaras · Residencial y comercial",
+    "titulo": "Videovigilancia IP y CCTV",
+    "descripcion": "Cámaras HD con visión nocturna y grabación en la nube o local."
+  },
+  {
+    "id": "camaras-mantenimiento",
+    "categoria": "camaras",
+    "etiqueta": "Cámaras · Mantenimiento",
+    "titulo": "Mantenimiento de cámaras",
+    "descripcion": "Limpieza, reenfoque, revisión de grabaciones y de almacenamiento."
+  }
+]
