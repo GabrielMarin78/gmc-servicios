@@ -172,7 +172,6 @@ header {position: sticky;top: 0;z-index: 1050;}
   border-radius: 2rem;
 }
 
-/* Sobre fondo azul marino el foco naranja no contrasta: se usa amarillo */
 .hero :focus-visible,
 .hero .btn:focus-visible {outline-color: var(--yellow);}
 

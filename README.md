@@ -18,5 +18,8 @@ El catálogo se carga por AJAX, por lo que **no funciona abriendo index.html con
 
 ## Pendiente antes de publicar
 - Reemplazar teléfono, WhatsApp, correo y dirección de ejemplo en `index.html`.
-- Añadir `integrity` y `crossorigin` a los CDN (hashes en getbootstrap.com y code.jquery.com).
 - Conectar el formulario a un servicio real de envío (por ahora es una simulación).
+
+## Alcance:
+El archivo JSON funciona como fuente de datos estática consultada mediante AJAX GET.
+El formulario mantiene la confirmación de simulación porque el proyecto no incluye un servidor ni una API para guardar solicitudes.
